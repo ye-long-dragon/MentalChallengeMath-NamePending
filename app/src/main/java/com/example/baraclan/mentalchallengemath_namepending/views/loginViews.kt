@@ -29,6 +29,8 @@ import androidx.compose.ui.res.fontResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.sp
 import com.example.baraclan.mentalchallengemath_namepending.R
 
 
@@ -54,7 +56,9 @@ public fun LoginScreen(
                 text = "Math Card Mania",
                 style = MaterialTheme.typography.headlineMedium,
                 modifier = Modifier.padding(bottom = 32.dp),
-                fontFamily = Pixel
+                fontSize = 42.sp,
+                fontFamily = Pixel,
+                textAlign = TextAlign.Center
             )
 
             // Username

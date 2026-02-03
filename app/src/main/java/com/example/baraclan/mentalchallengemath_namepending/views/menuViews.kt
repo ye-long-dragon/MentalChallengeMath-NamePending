@@ -34,7 +34,8 @@ fun menu(
     onLogout: () -> Unit,
     onAboutClick: () -> Unit,
     onEditDeckClick: () -> Unit,
-    onStartGameClick: () -> Unit // ADDED: New parameter
+    onStartGameClick: () -> Unit, // ADDED: New parameter
+    onMultiplayerGameClick:()->Unit
 ) {
     Column(
         modifier = Modifier
@@ -50,6 +51,11 @@ fun menu(
             Text("Start Game",fontFamily = Pixel)
         }
         Spacer(modifier = Modifier.height(16.dp))
+
+        Button(onClick = onMultiplayerGameClick) {
+            Text("Multiplayer",fontFamily = Pixel)
+        }
+        Spacer(modifier =  Modifier.height(16.dp))
 
         Button(onClick = onEditDeckClick) {
             Text("Edit Deck",fontFamily = Pixel)
@@ -125,6 +131,42 @@ fun AboutScreen(
         Button(onClick = onNavigateToMenu) {
             Text("Back to Menu",
                 fontFamily = Pixel)
+        }
+    }
+}
+
+@Composable
+fun MultiplayerSelectScreen(
+    onNavigateToMenu:()->Unit,
+    onNavigateToLocal:()->Unit,
+    onNavigateToOnline:()->Unit,
+){
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Text(
+            "Multiplayer Modes",
+            style = MaterialTheme.typography.headlineLarge,
+            fontFamily = Pixel
+        )
+        Spacer(modifier = Modifier.height(32.dp))
+
+        Button(onClick = onNavigateToLocal) { // ADDED: Button to start the game
+            Text("Local Multiplayer", fontFamily = Pixel)
+        }
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Button(onClick = onNavigateToOnline) {
+            Text("Online Multiplayer", fontFamily = Pixel)
+        }
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Button(onClick = onNavigateToMenu) {
+            Text("Return to Menu", fontFamily = Pixel)
         }
     }
 }

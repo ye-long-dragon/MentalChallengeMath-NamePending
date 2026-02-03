@@ -41,7 +41,11 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
 import com.example.baraclan.mentalchallengemath_namepending.R
+import com.example.baraclan.mentalchallengemath_namepending.ui.theme.Black
+import com.example.baraclan.mentalchallengemath_namepending.ui.theme.BlackBoardGreen
+import com.example.baraclan.mentalchallengemath_namepending.ui.theme.White
 
 
 @Composable
@@ -241,7 +245,8 @@ public fun HandDisplay(
                     text = "Your hand is empty.",
                     style = MaterialTheme.typography.bodyLarge,
                     color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f),
-                    modifier = Modifier.padding(start = 8.dp)
+                    modifier = Modifier.padding(start = 8.dp),
+                    textAlign = TextAlign.Center
                 )
             } else {
                 cardsInHand.forEach { card ->
@@ -270,12 +275,16 @@ fun statusBar(score: Int, turn: Int, modifier: Modifier = Modifier) {
     Row(
         modifier = modifier
             .fillMaxWidth()
+            .background(BlackBoardGreen)
             .padding(8.dp),
         horizontalArrangement = Arrangement.SpaceAround,
-        verticalAlignment = Alignment.CenterVertically
+        verticalAlignment = Alignment.CenterVertically,
+
     ) {
-        Text("Score: $score", style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.onBackground)
-        Text("Turn: $turn", style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.onBackground)
+        Text("Score: $score", style = MaterialTheme.typography.titleMedium, color = White,
+            fontFamily = Pixel)
+        Text("Turn: $turn", style = MaterialTheme.typography.titleMedium, color = White,
+            fontFamily = Pixel)
     }
 }
 
@@ -287,11 +296,14 @@ fun goal(gameGoals: List<Double>, modifier: Modifier = Modifier) {
             .padding(8.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text("Current Goal:", style = MaterialTheme.typography.headlineSmall, color = MaterialTheme.colorScheme.onBackground)
+        Text("Current Goal:", style = MaterialTheme.typography.headlineSmall, color = MaterialTheme.colorScheme.onBackground,
+            fontFamily = Pixel)
         if (gameGoals.isNotEmpty()) {
-            Text(gameGoals.first().toString(), style = MaterialTheme.typography.displaySmall, color = MaterialTheme.colorScheme.onBackground)
+            Text(gameGoals.first().toString(), style = MaterialTheme.typography.displaySmall, color = MaterialTheme.colorScheme.onBackground,
+                fontFamily = Pixel)
         } else {
-            Text("No Goal Set", style = MaterialTheme.typography.displaySmall, color = MaterialTheme.colorScheme.onBackground)
+            Text("No Goal Set", style = MaterialTheme.typography.displaySmall, color = MaterialTheme.colorScheme.onBackground,
+                fontFamily = Pixel)
         }
     }
 }
@@ -326,7 +338,8 @@ public fun EquationDisplay(
                     text = "Your equation will appear here.",
                     style = MaterialTheme.typography.bodyLarge,
                     color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f),
-                    modifier = Modifier.padding(start = 8.dp)
+                    modifier = Modifier.padding(start = 8.dp),
+                    fontFamily = Pixel
                 )
             } else {
                 equationElements.forEach { element ->

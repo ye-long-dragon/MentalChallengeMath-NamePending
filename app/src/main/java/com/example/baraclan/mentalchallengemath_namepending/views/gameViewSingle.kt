@@ -21,6 +21,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.ui.graphics.Color
 import com.example.baraclan.mentalchallengemath_namepending.views.*
 import com.example.baraclan.mentalchallengemath_namepending.models.*
 import com.example.baraclan.mentalchallengemath_namepending.scripts.RandomHand
@@ -91,6 +92,7 @@ public fun GameView(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceBetween
+
     ) {
         statusBar(currentScore, currentTurn)
 

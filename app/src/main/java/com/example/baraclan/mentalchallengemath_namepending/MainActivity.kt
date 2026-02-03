@@ -1,5 +1,6 @@
 package com.example.baraclan.mentalchallengemath_namepending
 
+import LocalMultiplayer
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -17,6 +18,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -34,6 +36,9 @@ object NavRoutes {
     const val AboutScreen = "about_screen"
     const val EditDeck = "edit_Deck"
     const val GameSingle = "game_single" // ADDED: New route for the GameView
+    const val MultiplayerView = "multiplayer_view"
+    const val LocalMultiplayer = "local_multiplayer"
+    const val OnlineMultiplayer = "online_multiplayer"
 }
 
 class MainActivity : ComponentActivity() {
@@ -193,6 +198,9 @@ public fun AppNavigation(
                 },
                 onStartGameClick = { // ADDED: New callback for starting the game
                     navController.navigate(NavRoutes.GameSingle)
+                },
+                onMultiplayerGameClick = {
+                    navController.navigate(NavRoutes.MultiplayerView)
                 }
             )
         }
@@ -246,6 +254,26 @@ public fun AppNavigation(
         // ADDED: Composable for the GameView
         composable(NavRoutes.GameSingle) {
             GameView(currentDeck) // Your GameView Composable is displayed here
+        }
+        composable(NavRoutes.MultiplayerView){
+            MultiplayerSelectScreen(
+                onNavigateToMenu = {
+                    navController.navigate(NavRoutes.Menu)
+                },
+                onNavigateToOnline = {
+
+                },
+                onNavigateToLocal = {
+                    navController.navigate(NavRoutes.LocalMultiplayer)
+                }
+            )
+        }
+        composable(NavRoutes.LocalMultiplayer){
+            LocalMultiplayer(
+                onReturntoMultiplayerMenu = {
+                    navController.navigate(NavRoutes.MultiplayerView)
+                }
+            )
         }
     }
 }
