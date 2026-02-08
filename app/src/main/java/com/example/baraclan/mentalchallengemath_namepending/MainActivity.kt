@@ -39,6 +39,7 @@ object NavRoutes {
     const val MultiplayerView = "multiplayer_view"
     const val LocalMultiplayer = "local_multiplayer"
     const val OnlineMultiplayer = "online_multiplayer"
+    const val EditDeckSelect = "edit_deck_select"
 }
 
 class MainActivity : ComponentActivity() {
@@ -194,7 +195,7 @@ public fun AppNavigation(
                     navController.navigate(NavRoutes.AboutScreen)
                 },
                 onEditDeckClick = {
-                    navController.navigate(NavRoutes.EditDeck)
+                    navController.navigate(NavRoutes.EditDeckSelect)
                 },
                 onStartGameClick = { // ADDED: New callback for starting the game
                     navController.navigate(NavRoutes.GameSingle)
@@ -274,6 +275,11 @@ public fun AppNavigation(
                     navController.navigate(NavRoutes.MultiplayerView)
                 }
             )
+        }
+        composable(NavRoutes.EditDeckSelect){
+            DeckSelectScreen(onDeckSelected = {
+                navController.navigate(NavRoutes.EditDeck)
+            })
         }
     }
 }
